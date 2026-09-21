@@ -3,7 +3,6 @@
 An interactive explorer for a completed comparison on 20 AMC 12 problems:
 four Qwen3.5-9B rollouts per problem and Open-Jev-9B answer probabilities.
 
-**Live app:** https://pdavar.github.io/
 
 Select a problem to inspect all four Qwen responses, correctness, seeds, token
 counts, latency, and Jev’s A–E distribution. Use “Read rollout” for the complete
