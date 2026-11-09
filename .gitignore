@@ -1,0 +1,8 @@
+.DS_Store
+
+# working files that the site doesn't use
+cover-art/
+images/fiddle-figure-hires.png
+images/heartsight-workflow.webp
+images/mi-detection-workflow.webp
+images/parmida.webp
