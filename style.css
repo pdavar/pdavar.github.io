@@ -1,0 +1,235 @@
+:root {
+  --bg: #fbfaf8;
+  --text: #1c1d21;
+  --muted: #5d6068;
+  --accent: #1f3a5f;
+  --accent-hover: #2f5d9e;
+  --line: #e4e1db;
+  --shadow: 0 6px 24px rgba(20, 25, 40, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121317;
+    --text: #e9e9ec;
+    --muted: #a3a6ae;
+    --accent: #9dbcf0;
+    --accent-hover: #c2d6fa;
+    --line: #2b2d34;
+    --shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent-hover); }
+a:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 3px; border-radius: 2px; }
+
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* Intro: portrait top-left, text to its right */
+.intro {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.portrait {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.name {
+  margin: 0 0 12px;
+  font-size: clamp(1.7rem, 3.6vw, 2.25rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.bio {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  line-height: 1.65;
+  max-width: 36em;
+}
+.bio p { margin: 0 0 1em; }
+.bio p:last-child { margin-bottom: 0; }
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 20px;
+}
+.email { color: var(--muted); }
+.icon-link {
+  display: inline-flex;
+  line-height: 0;
+}
+
+/* Tabs (Publications / Awards / Leadership); the bar stays hidden until tabs.js runs */
+.tab-list {
+  display: flex;
+  gap: 28px;
+  margin: 0 0 28px;
+  border-bottom: 1px solid var(--line);
+}
+.tab-list[hidden] { display: none; }
+
+.tab {
+  margin: 0 0 -1px;
+  padding: 6px 2px 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.tab:hover { color: var(--text); }
+.tab[aria-selected="true"] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+.tab:focus-visible {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.project-figure {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff; /* the figure has a white background */
+  overflow: hidden;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Awards */
+.award-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.award-list li {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.award-list li:last-child { border-bottom: 0; }
+.award-year {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.award-name { font-weight: 600; }
+.award-detail {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+.award-text {
+  display: block;
+  margin-top: 4px;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+.award-figure {
+  grid-column: 2;
+  max-width: 520px;
+  margin-top: 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff; /* the figure has a white background */
+  overflow: hidden;
+}
+
+/* Publication entries */
+.pub-list {
+  display: grid;
+  gap: 40px;
+}
+.pub-list .project { align-items: start; }
+
+.pub-authors,
+.pub-venue {
+  margin: 6px 0 0;
+  font-size: 1rem;
+}
+.pub-authors { color: var(--muted); }
+.pub-authors strong { color: var(--text); font-weight: 600; }
+.pub-venue { font-style: italic; }
+.pub-venue + .pub-venue { margin-top: 2px; }
+
+/* Phones: stack, keeping the portrait at the top left */
+@media (max-width: 600px) {
+  main { padding: 32px 20px 56px; }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 44px;
+  }
+  .portrait { width: 200px; border-radius: 14px; }
+
+  .project {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .project-title { font-size: 1.15rem; }
+  .tab-list { gap: 20px; }
+  .tab { font-size: 1.25rem; }
+
+  .award-list li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .award-figure {
+    grid-column: 1;
+    margin-top: 10px;
+  }
+  .pub-list { gap: 32px; }
+}
