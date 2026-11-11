@@ -88,7 +88,7 @@ main {
   display: inline-flex;
   line-height: 0;
 }
-.resume-link {
+.cv-link {
   padding: 2px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -97,7 +97,7 @@ main {
   text-decoration: none;
   transition: border-color 0.15s ease;
 }
-.resume-link:hover { border-color: var(--accent-hover); }
+.cv-link:hover { border-color: var(--accent-hover); }
 
 /* Tabs (Publications / Awards / Leadership); the bar stays hidden until tabs.js runs */
 .tab-list {
